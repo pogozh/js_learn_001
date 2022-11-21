@@ -28,15 +28,14 @@ const myFam = {
   Sergey: 1984,
   Polina: 2013,
   Natalya: 1963,
-  25: 'NumberOne',
+  25: 2025,
 };
 
 myFam.Oleg = 1991;
-// console.log(myFam['Sergey']);
+console.log(myFam['Sergey']);
 console.log(myFam[1]);
-console.log(myFam['1']);
+console.log("-->", myFam['Sergey']);
 console.log(myFam.Oleg);
-
 let keys = Object.keys(myFam);
 console.log(keys);
 console.log(keys[0]);
@@ -47,36 +46,37 @@ console.log(Object.values(myFam)[1]);
 
 let i;
 let mylength = Object.keys(myFam).length;
-mylength = myFam.mylength;
-let maxAge = 0;
+let maxAge = Object.values(myFam)[0];
 console.log('----');
-console.log(Object.values(myFam)[0]);
+console.log("lenght ", mylength);
+console.log("-> ",  Object.keys(myFam)[4].length);
+
 
 for (i = 0; i < mylength; ++i) {
   console.log(Object.values(myFam)[i]);
-  if (i < 3 && Object.values(myFam)[i] < Object.values(myFam)[i+i]) {
-    // console.log("inside",myFam[i],"\n");
-    maxAge = myFam.values[i];
+  if (i < Object.keys(myFam).length && Object.values(myFam)[i] < maxAge) {
+    // console.log("inside", Object.values(myFam)[i]);
+    maxAge = Object.values(myFam)[i];
   }
 }
 console.log("Oldest famity mamber is X", "|Age is ", 2022 - maxAge, "|burn at", maxAge);
 
 console.log('----');
-i = 1;
+i = 0;
 for (let key in myFam) {
 
   // console.log(myFam.values[i]);
-  console.log(key);
-  console.log(Object.values(myFam)[i]);
-  console.log(myFam[25]);
+  console.log(key, Object.values(myFam)[i]);
+  // console.log(Object.values(myFam)[i]);
+  // console.log(myFam[25]);
   // console.log(myFam.key());
   ++i;
 }
 
 let storeName = 'Yarche';
 let storeDescription = {
-    budget: 10000,
-    employees: ['Ivan', 'Vasya', 'Kirill'],
-    products: {iphone: 120000, imac: 300000},
-    open: true,
+  budget: 10000,
+  employees: ['Ivan', 'Vasya', 'Kirill'],
+  products: { iphone: 120000, imac: 300000 },
+  open: true,
 };
