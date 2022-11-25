@@ -37,8 +37,13 @@ console.log(NaN || null || !3 || undefined || 5); // 5
 console.log(NaN || null && !3 && undefined || 5); // 5
 console.log(5 === 5 && 3 > 1 || 5); // true
 
-// for (let i = 5; i < 11; ++i)
-//   console.log(i);
+// tasks
+{
+
+for (let i = 5; i < 11; ++i)
+  console.log(i);
+
+}
 
 {
   for (let i = 20; i > 9; --i) {
