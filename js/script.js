@@ -49,6 +49,15 @@ if (personalMovieDB.count < 10) {
 // console.log(Object.entries(personalMovieDB.movies));
 console.log(Object.entries(personalMovieDB.movies));
 
+_____
+console.log(NaN || 2 || undefined); //2
+console.log(NaN && 2 && undefined); // NAn
+console.log(1 && 2 && 3); // 3
+console.log(!1 && 2 || !3); // 0 false
+console.log(25 || null && !3); // 25
+console.log(NaN || null || !3 || undefined || 5); // 5
+console.log(NaN || null && !3 && undefined || 5); // 5
+console.log(5 === 5 && 3 > 1 || 5); // true
 
 //   {
 
@@ -134,3 +143,90 @@ console.log(Object.entries(personalMovieDB.movies));
 //   }
 //   // console.log(result);
 // }
+// tasks
+{
+
+  for (let i = 5; i < 11; ++i)
+    console.log(i);
+
+}
+
+{
+  for (let i = 20; i > 9; --i) {
+    console.log(i);
+    if (i === 13) break;
+  }
+}
+function thirdTask() {
+  for (let i = 2; i < 11; ++i)
+    if (i % 2 === 0) console.log(i);
+}
+
+{
+  for (let i = 2; i <= 16; i++) {
+    if (i % 2 === 0) {
+      continue;
+    } else {
+      console.log(i);
+    }
+  }
+}
+
+{
+
+  let i = 1;
+  while (i < 16) {
+    ++i;
+    if (i % 2 === 0) continue;
+    else console.log(i);
+  }
+
+}
+
+{
+
+  const arrayOfNumbers = [];
+  for (let i = 5; i < 11; ++i)
+    arrayOfNumbers[i - 5] = i;
+  console.log(arrayOfNumbers);
+
+}
+
+// ***_______________________***
+// Место для первой задачи
+function sayHello(answer) {
+  answer = "Привет, " + answer + "!"
+  return answer;
+}
+
+console.log(sayHello('Антон'));
+
+// Место для второй задачи
+function returnNeighboringNumbers(num) {
+  const arr = [num - 1, num, num + 1];
+  return arr;
+}
+
+console.log(returnNeighboringNumbers(5));
+
+// Место для третьей задачи
+function getMathResult(num, quantity) {
+  if (typeof (quantity) != 'number' || quantity < 1)
+    return num;
+
+  let temp = num;
+  let retValue = "" + num;
+  for (let i = 1; i < quantity; ++i) {
+    temp += num;
+    retValue += '---' + temp;
+  }
+  return retValue;
+
+}
+
+console.log(getMathResult(5, '6'));
+console.log(getMathResult(5, 0));
+console.log(getMathResult(5, -78));
+console.log(getMathResult(5, -7.8));
+console.log(getMathResult(5, 3));
+console.log(getMathResult(3, 10));
