@@ -1,49 +1,6 @@
 "use strict";
 
-// let numberOfFilms = readInt("sdf");
 
-//1
-// const numberOfFilms = +prompt('How many Films you have watched ?', '');
-let numberOfFilms = 7;
-console.log("-->", numberOfFilms);
-//2
-let personalMovieDB = {
-  count: numberOfFilms,
-  movies: {},
-  actors: {},
-  genres: [],
-  private: false,
-};
-console.log(Object.entries(personalMovieDB));
-
-//3
-
-let movie,
-  score = 0;
-for (let i = 0; i < 2; ++i) {
-  movie = prompt('Один из последних просмотренных фильмов?', '');
-  score = +prompt('На сколько оцените его?', '');
-  if (movie != null && movie != '' && score != null && score != '' && movie.length < 50) {
-    personalMovieDB.movies[movie] = score;
-  } else {
-    --i;
-  }
-}
-
-console.log('count - ', personalMovieDB.count);
-if (personalMovieDB.count < 10) {
-  console.log("Malo");
-  alert('Malo');
-} else {
-  console.log('Too match');
-  alert('Too match!');
-}
-
-
-// console.log(Object.entries(personalMovieDB.movies));
-console.log(Object.entries(personalMovieDB.movies));
-
-// _____
 console.log(NaN || 2 || undefined); //2
 console.log(NaN && 2 && undefined); // NAn
 console.log(1 && 2 && 3); // 3
@@ -53,181 +10,41 @@ console.log(NaN || null || !3 || undefined || 5); // 5
 console.log(NaN || null && !3 && undefined || 5); // 5
 console.log(5 === 5 && 3 > 1 || 5); // true
 
+
+// {
 //   {
 
-//     let i = 1;
-//     while (i < 16) {
-//       ++i;
-//       if (i % 2 === 0) {
-//         continue;
-//       } else {
-//         console.log(i);
-//       }
+//     const arrayOfNumbers = [];
+//     for (let i = 5; i < 11; ++i) {
+//       arrayOfNumbers[i - 5] = i;
 //     }
+//     console.log(arrayOfNumbers);
 
 //   }
 
-//   function firstTask() {
-//     // Значения массива менять нельзя, тут он проверяется автоматически именно на эти значения
-//     const arr = [3, 5, 8, 16, 20, 23, 50];
-//     const result = [];
-//     // Пишем решение вот тут
 
-//     for (let i = 0; i < arr.length; ++i)
-//       result[i] = arr[i];
-
-//     // Не трогаем
-
-//     return result;
-//   }
-
-
-//   // Место для второй задачи
-//   function secondTask() {
-//     // Значения массива менять нельзя, тут он проверяется автоматически именно на эти значения
-//     const data = [5, 10, 'Shopping', 20, 'Homework'];
-
-//     // Пишем решение вот тут
-//     for (let i = 0; i < data.length; ++i) {
-//       if (typeof (data[i]) != 'string') {
-//         data[i] *= 2;
-//       } else {
-//         data[i] += " - done";
-//       }
-//     }
-
-//     // Не трогаем
-//     return data;
-//   }
-
-
-//   // Место для третьей задачи
-//   function thirdTask() {
-//     // Значения массива менять нельзя, тут он проверяется автоматически именно на эти значения
-//     const data = [5, 10, 'Shopping', 20, 'Homework'];
-//     const result = [];
-
-//     // Пишем решение вот тут
-//     dLength = data.length;
-//     for (let i = 0; i < dLength; ++i)
-//       result[i] = data[dLength - i - 1];
-
-//     // Не трогаем
-//     return result;
-//   }
-
-
-
-//   const newArr = thirdTask();
-//   console.log(newArr);
-
-
-//   const lines = 5;
-//   let result = '';
-//   // Проверяется именно переменная result, формируйте строку в ней
-//   for (let i = 0; i <= lines; ++i) {
-//     for (let j = 0; j < lines - i; ++j) {
-//       result += ' ';
-//     }
-
-//     for (let j = 0; j < i * 2 + 1; ++j) {
-//       result += '*';
-//     }
-//     result += '\n';
-//   }
-//   // console.log(result);
-// }
-// tasks
-{
-
-  for (let i = 5; i < 11; ++i) {
-    console.log(i);
+// Место для третьей задачи
+function getMathResult(num, quantity) {
+  if (typeof (quantity) != 'number' || quantity < 1) {
+    return num;
   }
+  let temp = num;
+  let retValue = "" + num;
+  for (let i = 1; i < quantity; ++i) {
+    temp += num;
+    retValue += '---' + temp;
+  }
+  return retValue;
 
 }
 
-{
-  for (let i = 20; i > 9; --i) {
-    console.log(i);
-    if (i === 13) break;
-  }
-}
-function thirdTask() {
-  for (let i = 2; i < 11; ++i)
-    if (i % 2 === 0) console.log(i);
-}
+// console.log(getMathResult(5, '6'));
+// console.log(getMathResult(5, 0));
+// console.log(getMathResult(5, -78));
+// console.log(getMathResult(5, -7.8));
+// console.log(getMathResult(5, 3));
+// console.log(getMathResult(3, 10));
 
-{
-  for (let i = 2; i <= 16; i++) {
-    if (i % 2 === 0) {
-      continue;
-    } else {
-      console.log(i);
-    }
-  }
-}
-
-{
-
-  let i = 1;
-  while (i < 16) {
-    ++i;
-    if (i % 2 === 0) { continue; }
-    else { console.log(i); }
-  }
-
-}
-
-{
-
-  const arrayOfNumbers = [];
-  for (let i = 5; i < 11; ++i) {
-    arrayOfNumbers[i - 5] = i;
-  }
-  console.log(arrayOfNumbers);
-
-}
-
-// ***_"Coding Exercise 6 Задание на работу с функциями"***
-{
-  // Место для первой задачи
-  function sayHello(answer) {
-    answer = "Привет, " + answer + "!";
-    return answer;
-  }
-
-  console.log(sayHello('Антон'));
-
-  // Место для второй задачи
-  function returnNeighboringNumbers(num) {
-    const arr = [num - 1, num, num + 1];
-    return arr;
-  }
-
-  console.log(returnNeighboringNumbers(5));
-
-  // Место для третьей задачи
-  function getMathResult(num, quantity) {
-    if (typeof (quantity) != 'number' || quantity < 1) {
-      return num;
-    }
-    let temp = num;
-    let retValue = "" + num;
-    for (let i = 1; i < quantity; ++i) {
-      temp += num;
-      retValue += '---' + temp;
-    }
-    return retValue;
-
-  }
-
-  console.log(getMathResult(5, '6'));
-  console.log(getMathResult(5, 0));
-  console.log(getMathResult(5, -78));
-  console.log(getMathResult(5, -7.8));
-  console.log(getMathResult(5, 3));
-  console.log(getMathResult(3, 10));
-}
 
 // ---
 
@@ -243,13 +60,33 @@ function thirdTask() {
   console.log(Math.round(num));
 }
 
-
+// Coding Exercise 7: (*) Продвинутые задания на использование функций
 function calculateVolumeAndArea(r) {
-  let sq = r * r;
-  let v = sq * r;
-  let s = sq * 6;
-  let retValue = 'Объем куба: ' + v + ', площадь всей поверхности: ' + s;
+  let retValue = 'При вычислении произошла ошибка';
+  if ( r > 0 && parseInt(r) === r) {
+    retValue = 'Объем куба: ' + r * r * r + ', площадь всей поверхности: ' + r * r * 6;
+  }
   return retValue;
 }
 
 console.log(calculateVolumeAndArea(5.5));
+console.log(calculateVolumeAndArea(15));
+
+// Место для второй задачи
+function getCoupeNumber(num) {
+  if (isNaN(num) || num < 0 || parseInt(num) != num) {
+    return 'Ошибка. Проверьте правильность введенного номера места';
+  }
+  if (num === 0 || num > 36) {
+    return 'Таких мест в вагоне не существует';
+  }
+
+  return parseInt(num/4) + 1;
+}
+
+console.log(getCoupeNumber(0));
+console.log(getCoupeNumber(4));
+console.log(getCoupeNumber(36));
+console.log(getCoupeNumber(-5));
+console.log(getCoupeNumber(5.7));
+console.log(getCoupeNumber(0));
