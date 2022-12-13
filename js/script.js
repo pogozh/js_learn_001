@@ -1,9 +1,33 @@
 "use strict";
 
-
-//1
 // 1) Первую часть задания повторить по уроку
-let numberOfFilms = '';
+let numberOfFilms = 7;
+
+// console.log("-->", numberOfFilms);
+//2
+let personalMovieDB = {
+  count: numberOfFilms,
+  movies: { a: 8, bob: 9 },
+  actors: {},
+  genres: [],
+  private: false,
+};
+
+function writeYourGenres() {
+  for (let i = 0; i < 3; ++i) {
+    personalMovieDB.genres[i] = prompt(`Ваш любимый жанр под номером ${i + 1}`, '');
+  }
+}
+
+writeYourGenres();
+
+function showMyDB(hidden) {
+  if (!hidden) {
+    console.log(personalMovieDB);
+  }
+}
+
+showMyDB(personalMovieDB.private);
 
 function start() {
   numberOfFilms = '';
@@ -12,38 +36,33 @@ function start() {
   }
 }
 
-start();
-console.log("-->", numberOfFilms);
-//2
-let personalMovieDB = {
-  count: numberOfFilms,
-  movies: {},
-  actors: {},
-  genres: [],
-  private: false,
-};
-console.log(Object.entries(personalMovieDB));
-
+// start();
+// console.log(Object.entries(personalMovieDB));
 
 let movie,
   score = 0;
 
 
 function rememberMyFilms() {
+  let movie = '',
+    score = -1,
+    messege = '';
   for (let i = 0; i < 2; ++i) {
-    movie = prompt('Один из последних просмотренных фильмов?', '');
-    score = +prompt('На сколько оцените его?', '');
-    if (movie != null && movie != '' && score != null && score != '' && movie.length < 50) {
-      personalMovieDB.movies[movie] = score;
-    } else {
-      --i;
+    movie = '';
+    score = -1;
+    messege = (i + 1) + '-й из просмотренных фильмов?';
+    while (movie == null || movie == '' || movie.length > 50) {
+      movie = prompt(messege, '');
     }
+    while (score == null || isNaN(score) || typeof (score) != 'number' || score < 1) {
+      score = +prompt('На сколько оцените его?', '');
+    }
+
+    personalMovieDB.movies[movie] = score;
   }
 }
 
-rememberMyFilms();
-
-
+// rememberMyFilms();
 
 function detectPersonalLevel() {
   console.log('count - ', personalMovieDB.count);
@@ -56,7 +75,6 @@ function detectPersonalLevel() {
   }
 }
 
-detectPersonalLevel();
+// detectPersonalLevel();
 
 // console.log(Object.entries(personalMovieDB.movies));
-console.log(Object.entries(personalMovieDB.movies));

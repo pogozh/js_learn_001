@@ -18,12 +18,6 @@ console.log(Object.entries(personalMovieDB));
 
 //3
 
-// const lastMovie1 = prompt('Один из последних просмотренных фильмов?', ''),
-//   lastMovieScore1 = +prompt('На сколько оцените его?', ''),
-//   lastMovie2 = prompt('Один из последних просмотренных фильмов?', ''),
-//   lastMovieScore2 = +prompt('На сколько оцените его?', '');
-// personalMovieDB.movies[lastMovie1] = lastMovieScore1;
-// personalMovieDB.movies[lastMovie2] = lastMovieScore2;
 let movie,
   score = 0;
 for (let i = 0; i < 2; ++i) {
@@ -49,7 +43,7 @@ if (personalMovieDB.count < 10) {
 // console.log(Object.entries(personalMovieDB.movies));
 console.log(Object.entries(personalMovieDB.movies));
 
-_____
+// _____
 console.log(NaN || 2 || undefined); //2
 console.log(NaN && 2 && undefined); // NAn
 console.log(1 && 2 && 3); // 3
@@ -146,8 +140,9 @@ console.log(5 === 5 && 3 > 1 || 5); // true
 // tasks
 {
 
-  for (let i = 5; i < 11; ++i)
+  for (let i = 5; i < 11; ++i) {
     console.log(i);
+  }
 
 }
 
@@ -177,8 +172,8 @@ function thirdTask() {
   let i = 1;
   while (i < 16) {
     ++i;
-    if (i % 2 === 0) continue;
-    else console.log(i);
+    if (i % 2 === 0) { continue; }
+    else { console.log(i); }
   }
 
 }
@@ -186,8 +181,9 @@ function thirdTask() {
 {
 
   const arrayOfNumbers = [];
-  for (let i = 5; i < 11; ++i)
+  for (let i = 5; i < 11; ++i) {
     arrayOfNumbers[i - 5] = i;
+  }
   console.log(arrayOfNumbers);
 
 }
@@ -196,7 +192,7 @@ function thirdTask() {
 {
   // Место для первой задачи
   function sayHello(answer) {
-    answer = "Привет, " + answer + "!"
+    answer = "Привет, " + answer + "!";
     return answer;
   }
 
@@ -212,9 +208,9 @@ function thirdTask() {
 
   // Место для третьей задачи
   function getMathResult(num, quantity) {
-    if (typeof (quantity) != 'number' || quantity < 1)
+    if (typeof (quantity) != 'number' || quantity < 1) {
       return num;
-
+    }
     let temp = num;
     let retValue = "" + num;
     for (let i = 1; i < quantity; ++i) {
@@ -246,12 +242,14 @@ function thirdTask() {
   const num = 12.2;
   console.log(Math.round(num));
 }
-;
-function start() {
-  numberOfFilms = '';
-  while (numberOfFilms == '' || numberOfFilms == null || isNaN(numberOfFilms)) {
-    numberOfFilms = +prompt('How many movies did U watch?')
-  }
+
+
+function calculateVolumeAndArea(r) {
+  let sq = r * r;
+  let v = sq * r;
+  let s = sq * 6;
+  let retValue = 'Объем куба: ' + v + ', площадь всей поверхности: ' + s;
+  return retValue;
 }
 
-start(); 
+console.log(calculateVolumeAndArea(5.5));
