@@ -49,7 +49,7 @@ let mylength = Object.keys(myFam).length;
 let maxAge = Object.values(myFam)[0];
 console.log('----');
 console.log("lenght ", mylength);
-console.log("-> ",  Object.keys(myFam)[4].length);
+console.log("-> ", Object.keys(myFam)[4].length);
 
 
 for (i = 0; i < mylength; ++i) {
@@ -80,3 +80,49 @@ let storeDescription = {
   products: { iphone: 120000, imac: 300000 },
   open: true,
 };
+
+// 31. Callback- функции
+
+function fist() {
+  setTimeout(function () {
+    console.log('timeout');
+  }, 1200);
+}
+function second() {
+  setTimeout(function () {
+    console.log('now');
+  }, 0);
+}
+
+// fist();
+// second();
+
+function learnJS(lang, callback) {
+  console.log(`I'm learnin' ${lang}`);
+  callback();
+}
+function done() {
+  console.log(`i'v done today \n`);
+}
+
+learnJS(`Ruby`, done);
+
+// 32. Объекты, деструктуризация объектов (ES6)
+
+const options = {
+  name: 'test01',
+  width: 1024,
+  height: 1050,
+  colors: {
+    border: 'black',
+    bg: 'red',
+  }
+};
+
+console.log(options);
+delete (options.colors.bg);
+console.log(options);
+
+for (let key in options) {
+  console.log(`property ${key} have value ${options[key]}`);
+}
