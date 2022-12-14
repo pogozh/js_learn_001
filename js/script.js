@@ -16,10 +16,7 @@ let personalMovieDB = {
 function writeYourGenres() {
   for (let i = 0; i < 3; ++i) {
     while (personalMovieDB.genres[i] === '' || typeof (personalMovieDB.genres[i]) != 'string') {
-      personalMovieDB.genres[i] = prompt(`Ваш любимый жанр под номером ${i + 1}`, '');
-      console.log(personalMovieDB.genres[i]);
-      personalMovieDB.genres[i] = personalMovieDB.genres[i].trim();
-      console.log(personalMovieDB.genres[i]);
+      personalMovieDB.genres[i] = prompt(`Ваш любимый жанр под номером ${i + 1}`, '').trim();
     }
   }
 }
@@ -57,10 +54,7 @@ function rememberMyFilms() {
     score = -1;
     messege = (i + 1) + '-й из просмотренных фильмов?';
     while (movie === null || movie === '' || movie.length > 50) {
-      movie = prompt(messege, '');
-      console.log('|', movie, '|');
-      movie = movie.trim();
-      console.log('|', movie, '|');
+      movie = prompt(messege, '').trim();
     }
     while (score == null || isNaN(score) || typeof (score) !== 'number' || score < 1) {
       score = +prompt('Ha сколько оцените ero?', '');
