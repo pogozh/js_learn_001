@@ -20,7 +20,7 @@
       "skipFiles": [
         "<node_internals>/**"
       ],
-      "program": "${workspaceFolder}/js/temp_script.js"
+      "program": "${workspaceFolder}/js/script.js"
     }
   ]
 }
