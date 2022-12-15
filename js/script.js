@@ -21,7 +21,7 @@ function writeYourGenres() {
   }
 }
 
-writeYourGenres();
+// writeYourGenres();
 
 function showMyDB(hidden) {
   if (!hidden) {
@@ -29,7 +29,7 @@ function showMyDB(hidden) {
   }
 }
 
-showMyDB(personalMovieDB.private);
+// showMyDB(personalMovieDB.private);
 
 function start() {
   numberOfFilms = '';
@@ -64,7 +64,7 @@ function rememberMyFilms() {
   }
 }
 
-rememberMyFilms();
+// rememberMyFilms();
 
 function detectPersonalLevel() {
   console.log('count - ', personalMovieDB.count);
@@ -80,3 +80,9 @@ function detectPersonalLevel() {
 // detectPersonalLevel();
 
 // console.log(Object.entries(personalMovieDB.movies));
+
+const str =  `4, 2 , 7, u, -- els, ewr, 67`;
+// prompt('str->?array','');
+let arr =  str.split(`,`);
+arr = arr.sort();
+console.log(arr.join(`;` ));
