@@ -32,7 +32,7 @@ const myFam = {
 };
 
 myFam.Oleg = 1991;
-console.log(myFam['Sergey']);
+console.log('0----');
 console.log(myFam[1]);
 console.log("-->", myFam['Sergey']);
 console.log(myFam.Oleg);
@@ -47,7 +47,7 @@ console.log(Object.values(myFam)[1]);
 let i;
 let mylength = Object.keys(myFam).length;
 let maxAge = Object.values(myFam)[0];
-console.log('----');
+console.log('1----');
 console.log("lenght ", mylength);
 console.log("-> ", Object.keys(myFam)[4].length);
 
@@ -61,15 +61,14 @@ for (i = 0; i < mylength; ++i) {
 }
 console.log("Oldest famity mamber is X", "|Age is ", 2022 - maxAge, "|burn at", maxAge);
 
-console.log('----');
+console.log('2----');
 i = 0;
 for (let key in myFam) {
 
   // console.log(myFam.values[i]);
-  console.log(key, Object.values(myFam)[i]);
+  console.log(key, myFam[key]);
   // console.log(Object.values(myFam)[i]);
   // console.log(myFam[25]);
-  // console.log(myFam.key());
   ++i;
 }
 
@@ -116,13 +115,50 @@ const options = {
   colors: {
     border: 'black',
     bg: 'red',
-  }
+  },
+  makeTest: function () {
+    console.log(`options test properties = ${optionsRecursion(options)}`);
+  },
 };
 
 console.log(options);
-delete (options.colors.bg);
-console.log(options);
+// delete (options.colors.bg);
+console.log('\n');
 
-for (let key in options) {
-  console.log(`property ${key} have value ${options[key]}`);
+function optionsWithoutRecursion() {
+  for (let key in options) {
+    if (typeof (options[key]) === 'object') {
+      console.log(`subobject ${key} has:`);
+      for (let key1 in options[key]) {
+        console.log(`..property ${key1} have value ${options[key][key1]}`);
+      }
+    } else {
+      console.log(`property ${key} have value ${options[key]}`);
+    }
+  }
 }
+
+function optionsRecursion(options, shift = '', counter = 0) {
+  for (let key in options) {
+    if (typeof (options[key]) === 'object') {
+      console.log(`subobject ${key} has:`);
+      counter += optionsRecursion(options[key], '->', 0);
+    } else {
+      console.log(`${shift}property ${key} have value ${options[key]}`);
+      ++counter;
+    }
+  }
+  return counter;
+}
+
+// console.log(`Properties count = `, optionsRecursion(options),` Main properties =`, Object.keys(options).length);
+options.makeTest();
+const { border, bg } = options.colors;
+console.log(border, bg);
+
+// 33. Массивы и псевдомассивы
+const arr = [2, 4, 6, 8];
+arr.forEach(function (item, i, arr) {
+  console.log(`Element №${i} - ${item} form [${arr}] `);
+}
+);
