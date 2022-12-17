@@ -81,7 +81,7 @@ function detectPersonalLevel() {
 
 // console.log(Object.entries(personalMovieDB.movies));
 
-const str = `4, 2 , 7, u, -- els, ewr, 67`;
+const str = `4,2,7,l,67,5,--,a,z,g`;
 // prompt('str->?array','');
 let arr = str.split(`,`);
 arr = arr.sort(comareNumbers);

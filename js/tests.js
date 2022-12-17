@@ -157,8 +157,41 @@ const { border, bg } = options.colors;
 console.log(border, bg);
 
 // 33. Массивы и псевдомассивы
-const arr = [2, 4, 6, 8];
+const arr = [2, 4, 6, 8, `sd`];
 arr.forEach(function (item, i, arr) {
   console.log(`Element №${i} - ${item} form [${arr}] `);
 }
 );
+
+// 35. Передача по ссылке, поверхностное и глубокое копирования
+
+const or = 'obj';
+let originObject01 = {
+  a: 1,
+  b: 2,
+  c: { x: 3, y: 4, z: { xx: 5, yy: 6 } },
+  d: `done ${or}`,
+};
+
+let copyObject01 = Object.assign({}, originObject01); // Deep coping ?, no! The Same!
+// Object.assign(copyObject01, originObject01); // Поверхностие копирование
+console.log(`O`, originObject01);
+console.log(`C`, copyObject01);
+copyObject01.a = 200;
+console.log(`O`, originObject01);
+console.log(`C`, copyObject01);
+
+// ___
+const video = [`youube`, `vimeo`, `redtube`],
+  blog = [`livejournal`, `blogger`, `tweeter`],
+  internet = [...video, ...blog, `facebook`, `insta`];
+console.log(internet);
+console.log(...arr);
+
+function log(a) { console.log(...a); }
+
+log(arr);
+let copyObject02 = {...originObject01};
+copyObject02.a = `www`;
+console.log(`O`, originObject01);
+console.log(`C`, copyObject02);

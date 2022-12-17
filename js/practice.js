@@ -217,15 +217,151 @@ function fib(size) {
   for (let i = 0; i < size - 1; ++i) {
     strFib += ` ${arr[1]}`;
     arr.splice(0, 1, arr[1], (arr[0] + arr[1]));
-    delete(arr[2]);
+    delete (arr[2]);
   }
   return strFib;
 }
 
-console.log(fib(5));
-console.log(fib(4));
-console.log(fib(7));
-console.log(fib('7'));
-console.log(fib(1));
-console.log(fib(0));
-console.log(fib(0.5));
+// console.log(fib(5));
+// console.log(fib(4));
+// console.log(fib(7));
+// console.log(fib('7'));
+// console.log(fib(1));
+// console.log(fib(0));
+// console.log(fib(0.5));
+
+
+/*
+Задачи:
+1) Напишите функцию showExperience, которая будет принимать в себя объект со всеми данными и возвращать строку с опытом.
+Пример:
+showExperience(personalPlanPeter) => '1 month'
+P.S. желательно использовать деструктуризацию, но не обязательно
+2) Напишите функцию showProgrammingLangs, которая будет принимать в себя объект со всеми данными и возвращать строку в нужном виде.
+Пример:
+showProgrammingLangs(personalPlanPeter)  =>
+"Язык js изучен на 20% Язык php изучен на 10%"
+Причем функция должна работать вне зависимости от количества языков. Если ни один не указан, то возвращается пустая строка.
+P.S. Для переноса строки используется \n в конце строки.
+3) Создайте метод showAgeAndLangs внутри объекта personalPlanPeter. При его вызове метод будет принимать в себя объект и возвращать строку в нужном виде.
+Пример:
+personalPlanPeter.showAgeAndLangs(personalPlanPeter)
+=> 'Мне 29 и я владею языками: RU ENG'
+Заметьте, что возраст и языки подставляются автоматически из объекта, а языки всегда в верхнем регистре (большими буквами). Если данные в объекте поменяются, то и сообщение тоже изменится.
+P.S. Дальше по курсу мы научимся удобно обращаться из метода к самому объекту, в котором он расположен. Но пока делаем это менее удобным способом)
+*/
+const personalPlanPeter = {
+  name: "Peter",
+  age: "29",
+  skills: {
+    languages: ['ru', 'eng'],
+    programmingLangs: {
+      js: '20%',
+      php: '10%'
+    },
+    exp: '1 month'
+  },
+  showAgeAndLangs() { // must get object? OMG
+    return (`Мне ${this.age} и я владею языками: ${this.skills.languages.join(` `).toUpperCase()}`);
+  },
+};
+
+
+function showExperience(plan) {
+  return plan.skills.exp;
+}
+
+function showProgrammingLangs(plan) {
+  let str = '';
+  for (let key in plan.skills.programmingLangs) {
+    if (key) {
+      str += `Язык ${key} изучен на ${plan.skills.programmingLangs[key]}\n`;
+    }
+  }
+  return str;
+}
+
+console.log(showExperience(personalPlanPeter));
+console.log(personalPlanPeter.showAgeAndLangs());
+console.log(showProgrammingLangs(personalPlanPeter));
+
+/*
+1) Напишите функцию showFamily, которая будет принимать в себя массив строк и возвращать сообщение в нужном формате.
+showFamily(family)  => 'Семья состоит из: Peter Ann Alex Linda'
+Имена подставляются автоматически из массива. Если массив пустой, то выводится сообщение 'Семья пуста'
+2) напишите функцию standardizeStrings, которая будет принимать в себя массив строк и будет выводить в консоль эти строки в нижнем регистре.
+Пример:
+standardizeStrings(favoriteCities)  выведет в консоль
+lisbon
+rome
+milan
+dublin
+Это частая задача в реальности, так как от пользователя нам могут прийти ответы в самых разных форматах. В том числе и с разными буквами :) 
+Поэтому нам нужно привести строки в один формат для правильной работы.
+*/
+
+const family = ['Peter', 'Ann', 'Alex', 'Linda'];
+const famil = [];
+
+function showFamily(arr) {
+  const str = arr.join(` `);
+  if (str !== '') {
+    return `Семья состоит из: ${arr.join(` `)}`;
+  }
+  else {
+    return `Семья пуста`;
+  }
+}
+console.log(showFamily(family));
+
+const favoriteCities = ['liSBon', 'ROME', 'miLan', 'Dublin'];
+
+function standardizeStrings(arr) {
+  arr.forEach(key => {
+    if (key != '') {
+      console.log(key.toLowerCase());
+    }
+    return '';
+  });
+}
+
+console.log(standardizeStrings(favoriteCities));
+
+/*
+3) Задача с собеседований. Напишите функцию reverse, которая принимает в себя строку
+и возвращает эту строку в обратном порядке.
+Пример:
+const someString = 'This is some strange string';
+reverse(someString) => 'gnirts egnarts emos si sihT'
+Функцию можно применить к любой строке. Если в функцию приходит не строка - вернуть сообщение "Ошибка!"
+Это очень интересная задача, которую можно решить несколькими способами. Её дают для того, чтобы оценить
+навыки и знания программиста, посмотреть как он думает. Как небольшая подсказка, есть метод, который может вам помочь. 
+И часть дополнительных вариантов решения мы тоже изучим в течении курса.
+*/
+
+const someString = 'This is some strange string';
+
+function reverse(str) {
+  if (typeof (str) !== 'string' || str === '') { return 'Ошибка!'; }
+  let temp = '';
+  //varinat 1
+  // for (let i = str.length - 1; i > -1; --i) {
+  //   temp += str[i];
+  // }
+  // return temp;
+  // varinat 2
+  temp = str.split(``);
+  temp = temp.reverse();
+  str = temp.join(``);
+  return str;
+}
+// mb str.reverse();
+
+console.log(`reverse:`, reverse(someString));
+
+const baseCurrencies = ['USD', 'EUR'];
+const additionalCurrencies = ['UAH', 'RUB', 'CNY'];
+
+function availableCurr(arr, missingCurr) {
+
+}
