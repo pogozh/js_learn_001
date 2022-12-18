@@ -34,7 +34,7 @@ const myFam = {
 myFam.Oleg = 1991;
 console.log('0----');
 console.log(myFam[1]);
-console.log("-->", myFam['Sergey']);
+// console.log("-->", myFam['Sergey']); // workes but warrior
 console.log(myFam.Oleg);
 let keys = Object.keys(myFam);
 console.log(keys);
