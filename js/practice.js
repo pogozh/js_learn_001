@@ -323,12 +323,15 @@ console.log(showFamily(family));
 const favoriteCities = ['liSBon', 'ROME', 'miLan', 'Dublin'];
 
 function standardizeStrings(arr) {
+  // let str = '';
   arr.forEach(key => {
-    if (key != '') {
+    if (key) {
+      // str += `${key.toLowerCase()}\n`;
       console.log(key.toLowerCase());
     }
-    return '';
   });
+  // return str;
+  return null;
 }
 
 console.log(standardizeStrings(favoriteCities));
