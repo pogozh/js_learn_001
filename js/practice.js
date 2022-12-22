@@ -331,7 +331,7 @@ function standardizeStrings(arr) {
     }
   });
   // return str;
-  return null;
+  return '';
 }
 
 console.log(standardizeStrings(favoriteCities));

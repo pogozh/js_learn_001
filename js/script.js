@@ -1,87 +1,87 @@
 "use strict";
 
-// 1) Первую часть задания повторить по уроку
-let numberOfFilms = 7;
-
-// console.log("-->", numberOfFilms);
-//2
 let personalMovieDB = {
-  count: numberOfFilms,
-  movies: { a: 8, bob: 9 },
+  count: 0,
+  movies: {},
   actors: {},
   genres: [],
   private: false,
+
+  start: function () {
+    this.count = '';
+    while (this.count == '' || this.count === null || isNaN(this.count)) {
+      this.count = +prompt('How many movies did You watch?', '');
+    }
+  },
+
+  writeYourGenres: () => {
+    for (let i = 0; i < 2; ++i) {
+      let genre = ``;
+      while (genre === '' || genre == null || typeof (genre) !== 'string') {
+        console.log(`Incorrct input\n`);
+        genre = prompt(`Ваш любимый жанр под номером ${i + 1}`, '');
+      }
+      personalMovieDB.genres[i] = genre.trim();
+    }
+
+    personalMovieDB.genres.forEach((item, i) => {
+      console.log(`Любимый жанр № ${i + 1} - это ${item}`);
+    });
+  },
+
+  showMyDB: function (hidden) {
+    if (!hidden) {
+      console.log(`showing DB:\n`, personalMovieDB);
+    }
+  },
+
+  rememberMyFilms: function () {
+    let movie = '',
+      score = -1,
+      messege = '';
+    for (let i = 0; i < 2; ++i) {
+      movie = '';
+      score = -1;
+      messege = (i + 1) + '-й из просмотренных фильмов?';
+      while (movie === null || movie === '' || movie.length > 50) {
+        movie = prompt(messege, '').trim();
+      }
+      while (score == null || isNaN(score) || typeof (score) !== 'number' || score < 1 || score > 10) {
+        score = +prompt('Ha сколько оцените ero?', '');
+      }
+
+      personalMovieDB.movies[movie] = score;
+    }
+  },
+
+  detectPersonalLevel: function () {
+    console.log('count - ', this.count);
+    if (this.count < 10) {
+      console.log(`You don't watch a lot of movies (${this.count}).`);
+      alert(`You don't watch a lot of movies (${this.count}).`);
+    } else {
+      console.log(`you watch too many movies (${this.count})!`);
+      alert(`You watch too many movies (${this.count})!`);
+    }
+  },
+
+  toggleVisibleMyDB: function () {
+    this.private = !(this.private);
+  },
+
 };
 
-function writeYourGenres() {
-  for (let i = 0; i < 3; ++i) {
-    while (personalMovieDB.genres[i] === '' || typeof (personalMovieDB.genres[i]) != 'string') {
-      personalMovieDB.genres[i] = prompt(`Ваш любимый жанр под номером ${i + 1}`, '').trim();
-    }
-  }
-}
-
-// writeYourGenres();
-
-function showMyDB(hidden) {
-  if (!hidden) {
-    console.log(personalMovieDB);
-  }
-}
-
-// showMyDB(personalMovieDB.private);
-
-function start() {
-  numberOfFilms = '';
-  while (numberOfFilms == '' || numberOfFilms == null || isNaN(numberOfFilms)) {
-    numberOfFilms = +prompt('How many movies did U watch?', '');
-  }
-}
-
-// start();
-// console.log(Object.entries(personalMovieDB));
-
-let movie,
-  score = 0;
+personalMovieDB.start();
+personalMovieDB.writeYourGenres();
+personalMovieDB.rememberMyFilms();
+personalMovieDB.detectPersonalLevel();
+console.log(personalMovieDB.private);
+personalMovieDB.showMyDB(personalMovieDB.private);
+personalMovieDB.toggleVisibleMyDB();
 
 
-function rememberMyFilms() {
-  let movie = '',
-    score = -1,
-    messege = '';
-  for (let i = 0; i < 2; ++i) {
-    movie = '';
-    score = -1;
-    messege = (i + 1) + '-й из просмотренных фильмов?';
-    while (movie === null || movie === '' || movie.length > 50) {
-      movie = prompt(messege, '').trim();
-    }
-    while (score == null || isNaN(score) || typeof (score) !== 'number' || score < 1) {
-      score = +prompt('Ha сколько оцените ero?', '');
-    }
 
-    personalMovieDB.movies[movie] = score;
-  }
-}
-
-// rememberMyFilms();
-
-function detectPersonalLevel() {
-  console.log('count - ', personalMovieDB.count);
-  if (personalMovieDB.count < 10) {
-    console.log("Malo");
-    alert('Malo');
-  } else {
-    console.log('Too match');
-    alert('Too match!');
-  }
-}
-
-// detectPersonalLevel();
-
-// console.log(Object.entries(personalMovieDB.movies));
-
-const str = `4,2,7,l,67,5,--,a,z,g`;
+const str = `4,2,7,11,67,5,--,a,z,g`;
 // prompt('str->?array','');
 let arr = str.split(`,`);
 arr = arr.sort(comareNumbers);

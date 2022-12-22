@@ -191,7 +191,30 @@ console.log(...arr);
 function log(a) { console.log(...a); }
 
 log(arr);
-let copyObject02 = {...originObject01};
+let copyObject02 = { ...originObject01 };
 copyObject02.a = `www`;
 console.log(`O`, originObject01);
 console.log(`C`, copyObject02);
+
+// 36. Основы ООП, прототипно-ориентированное наследование
+
+let solder = {
+  health: 400,
+  armor: 100,
+  agility: 7,
+  sayHello: function () { return `Hello from solder` },
+};
+
+let jonh = {
+  health: 100,
+  armor: 50,
+};
+
+// jonh.__proto__ = solder;
+Object.setPrototypeOf(jonh, solder);
+
+let smith = Object.create(solder);
+
+console.log(jonh, ` proto `, jonh.agility);
+console.log(jonh.sayHello());
+console.log(`smith says: `, smith.sayHello());
