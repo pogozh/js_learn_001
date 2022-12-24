@@ -218,3 +218,6 @@ let smith = Object.create(solder);
 console.log(jonh, ` proto `, jonh.agility);
 console.log(jonh.sayHello());
 console.log(`smith says: `, smith.sayHello());
+
+const test = `EPIC`;
+console.log(test);
