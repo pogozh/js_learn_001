@@ -29,6 +29,20 @@ let personalMovieDB = {
     });
   },
 
+  writeAllGenries: () => {
+    let genres = ``;
+    while (genres === '' || genres == null || typeof (genres) !== 'string') {
+      genres = prompt(`Введите любимые жанры  через запятую`, '').toLowerCase();
+    }
+
+    personalMovieDB.genres = genres.split(`, `);
+    personalMovieDB.genres.sort();
+
+    personalMovieDB.genres.forEach((item, i) => {
+      console.log(`Любимый жанр № ${i + 1} - это ${item}`);
+    });
+  },
+
   showMyDB: function (hidden) {
     if (!hidden) {
       console.log(`showing DB:\n`, personalMovieDB);
@@ -71,19 +85,20 @@ let personalMovieDB = {
 
 };
 
-personalMovieDB.start();
-personalMovieDB.writeYourGenres();
-personalMovieDB.rememberMyFilms();
-personalMovieDB.detectPersonalLevel();
-console.log(personalMovieDB.private);
-personalMovieDB.showMyDB(personalMovieDB.private);
-personalMovieDB.toggleVisibleMyDB();
+// personalMovieDB.start();
+// personalMovieDB.writeYourGenres();
+// personalMovieDB.rememberMyFilms();
+// personalMovieDB.detectPersonalLevel();
+// console.log(personalMovieDB.private);
+// personalMovieDB.showMyDB(personalMovieDB.private);
+// personalMovieDB.toggleVisibleMyDB();
 
 
 
 const str = `4,2,7,11,67,5,--,a,z,g`;
 // prompt('str->?array','');
 let arr = str.split(`,`);
+debagger;
 arr = arr.sort(comareNumbers);
 console.log(arr.join(`;`));
 

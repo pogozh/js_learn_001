@@ -202,7 +202,7 @@ let solder = {
   health: 400,
   armor: 100,
   agility: 7,
-  sayHello: function () { return `Hello from solder` },
+  sayHello: function () { return `Hello from solder`; },
 };
 
 let jonh = {
@@ -219,5 +219,5 @@ console.log(jonh, ` proto `, jonh.agility);
 console.log(jonh.sayHello());
 console.log(`smith says: `, smith.sayHello());
 
-const test = `EPIC`;
-console.log(test);
+const test = `            EPIC   `;
+console.log(test.trim());
