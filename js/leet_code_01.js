@@ -37,14 +37,24 @@ Constraints:
 s contains only the characters ('I', 'V', 'X', 'L', 'C', 'D', 'M').
 It is guaranteed that s is a valid roman numeral in the range [1, 3999]. */
 
+// "use strict";
 /**
  * @param {string} s
  * @return {number}
  */
+const conversionPattern = { I: 1, V: 5, X: 10, L: 50, C: 100, D: 500, M: 1000 };
+let sum = 0;
+let previousValue = 0;
 var romanToInt = function (s) {
     for (let i = 0; i < s.length; ++i) {
-        switch (s[i]) {
-            case 'I': return 1;
-        }
+        let currentValue = conversionPattern[`${s.at(i).toUpperCase()}`];
+        if (previousValue >= currentValue) {sum += currentValue;}
+        else {sum += currentValue - (previousValue * 2);}
+        previousValue = currentValue;
     }
+    return sum;
 };
+
+
+let s = 'LVIII';
+console.log(romanToInt(s));
