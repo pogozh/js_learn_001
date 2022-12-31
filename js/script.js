@@ -90,3 +90,9 @@ console.log(arr.join(`;`));
 function comareNumbers(a, b) {
   return a - b;
 }
+
+let duhovka =  {
+deep: 55 ,
+wide: 57,
+high: 58,
+};
