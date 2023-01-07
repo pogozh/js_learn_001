@@ -219,4 +219,111 @@ console.log(jonh, ` proto `, jonh.agility);
 console.log(jonh.sayHello());
 console.log(`smith says: `, smith.sayHello());
 
+const test = `            EPIC   `;
+console.log(test.trim());
+
+// 40  Области видимости и выполнения
+
+let globa = 'Foo';
+function outside() {
+  let ret = '';
+  function inside() {
+    ret += globa;
+    return ret;
+  }
+  return inside;
+}
+
+let vari = outside();
+
+// console.log(vari(`Bar`));
+// console.log(vari(`Bar`));
+// console.log(vari(`Rab`));
+// console.log(vari(`AAA`));
+console.log(vari());
+console.log(vari());
+console.log(vari());
+console.log(vari());
+
+// const getSum = function(a, b) {
+//   return a + b;
+// };
+// const result = getSum(5, 6);
+console.log(typeof (NaN));
+
+function foo(a, b) {
+  const [ss, zz] = a;
+  const { eng } = b;
+
+  return `${ss} ${zz} ${eng}`;
+}
+
+const result = foo([`www`, 'Hello', 'Привет'], { ru: 'Мир', eng: 'World' });
+console.log(result);
+
+// Пути создания IIFE
+
+(function () {
+  console.log("Скобки вокруг функции");
+})();
+
+(function () {
+  console.log("Скобки вокруг всего");
+}());
+
+!function () {
+  console.log("Выражение начинается c логического оператора NOT");
+}();
+
++function () {
+  console.log("Выражение начинается c унарного плюса");
+}();
+
+function sum(a) {
+  return function (b) {
+    return (a + b);
+  };
+}
+
+let sumRes = sum();
+console.log(sum(5)(6));
+
+function inBetween(a, b) {
+  return function (x) {
+    return x >= a && x <= b;
+  };
+}
+
+let arrr0 = [1, 2, 3, 4, 5, 6, 7];
+console.log(arrr0.filter(inBetween(3, 6))); // 3,4,5,6
+
+function inArray(arr) {
+  return function (x) {
+    return arr.includes(x);
+  };
+}
+
+
+let arr01 = [1, 2, 3, 4, 5, 6, 7];
+console.log(arr01.filter(inArray([3, 4, 5, 11]))); // 3,4,5,6
+{
+  let users = [
+    { name: "John", age: 20, surname: "Johnson" },
+    { name: "Pete", age: 18, surname: "Peterson" },
+    { name: "Ann", age: 19, surname: "Hathaway" }
+  ];
+
+  function byField(field) {
+    return (a, b) =>
+      a[field] > b[field] ? 1 : -1; debugger
+  }
+
+  users.sort(byField('name')); debugger
+  users.forEach(user => console.log(user.name)); debugger // Ann, John, Pete debugger
+
+  users.sort(byField('age')); debugger
+  users.forEach(user => console.log(user.name)); debugger // Pete, Ann, Johndebugger
+}
+
+
 console.log([] + 1 + 2);
