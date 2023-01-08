@@ -325,5 +325,7 @@ console.log(arr01.filter(inArray([3, 4, 5, 11]))); // 3,4,5,6
   users.forEach(user => console.log(user.name)); debugger // Pete, Ann, Johndebugger
 }
 
-
+// Section 2-41
+console.log( typeof([] + false - null + true));
 console.log([] + 1 + 2);
+console.log("1"[0]);

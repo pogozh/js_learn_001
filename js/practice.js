@@ -360,7 +360,9 @@ function reverse(str) {
   // return temp;
   // varinat 2
   temp = str.split(``);
+  console.log(`1\n`, temp);
   temp = temp.reverse();
+  console.log(`2\n`, temp);
   str = temp.join(``);
   return str;
 }
@@ -492,7 +494,7 @@ function sortStudentsByGroups(arr) {
       if (i > 2 && i < 6) {
         returnValue[1][i - 3] = item;
       } else
-        if (i > 5 && i <=8 ) {
+        if (i > 5 && i <= 8) {
           returnValue[2][i - 6] = item;
         } else
           if (i === 9) {
@@ -509,3 +511,103 @@ function sortStudentsByGroups(arr) {
 }
 
 console.log(sortStudentsByGroups(students));
+/*У вас есть объект с данными о ресторане. Начинающий разработчик создал несколько функций, 
+которые работают неправильно и он не может понять почему. Нужно исправить функции так, 
+чтобы они давали всегда правильный результат.
+1) Функция isOpen не хочет правильно работать. Что мы уже не пробовали подставлять в неё - 
+результат все время неправильный. Необходимо найти причины и исправить.
+2) Функция isAverageLunchPriceTrue должна брать цены двух любых блюд из меню, 
+складывать их и сравнивать с средним чеком (averageLunchPrice).
+Сейчас функция работает, но постоянно выдает неправильный результат. 
+Ведь из представленного меню сумма двух любых цен всегда будет больше 20. Необходимо найти причину и исправить.
+3) Функция transferWaitors создана для того, чтобы копировать шаблон данных и передавать их в другой ресторан. 
+Конечно, в другом ресторане будут другие блюда, другие официанты и тп. Сейчас эта функция только в начале разработки и 
+должна менять данные про официантов.
+Но в нынешнем виде мы обнаружили, что после её запуска не только копия данных содержит новых официантов,
+но и основные данные! В restorantData сотрудник Alice исчезает и заменяется Mike! Необходимо найти причину
+ и немедленно исправить, чтобы данные были разделены.*/
+
+const restorantData = {
+  menu: [
+    {
+      name: 'Salad Caesar',
+      price: '14$'
+    },
+    {
+      name: 'Pizza Diavola',
+      price: '9$'
+    },
+    {
+      name: 'Beefsteak',
+      price: '17$'
+    },
+    {
+      name: 'Napoleon',
+      price: '7$'
+    }
+  ],
+  waitors: [
+    { name: 'Alice', age: 22 }, { name: 'John', age: 24 }
+  ],
+  averageLunchPrice: '20$',
+  openNow: true
+};
+
+function isOpen(prop) {
+  let answer = '';
+  !prop ? answer = 'Закрыто' : answer = 'Открыто';
+
+  return answer;
+}
+
+// console.log(isOpen(openNow))
+
+function isAverageLunchPriceTrue(fDish, sDish, average) {
+  if ((+fDish.price.slice(0, -1) + parseInt(sDish.price)) < parseInt(average)) {
+    return 'Цена ниже средней';
+  } else {
+    return 'Цена выше средней';
+  }
+}
+
+console.log(isAverageLunchPriceTrue(restorantData.menu[3], restorantData.menu[1], restorantData.averageLunchPrice));
+
+function deepClone(data) {
+  const clonObject = {};
+  for (const i in data) {
+    if (clonObject[i] instanceof Object) {
+      clonObject[i] = transferWaitors(clonObject[i]);
+      continue;
+    }
+    clonObject[i] = data[i];
+  }
+  return clonObject;
+}
+
+function transferWaitors(data) {
+  // const copy = deepClone(data);
+  const copy = JSON.parse(JSON.stringify(data));
+  copy.waitors[0] = { name: `Mike`, age: 32 };
+  return copy;
+}
+
+// transferWaitors(restorantData);
+// console.log(`copy data\n`, transferWaitors(restorantData));
+let copy = transferWaitors(restorantData);
+copy.waitors[0] = { name: `Mike`, age: 32 };
+console.log(`copy:`, copy);
+console.log(`origin data\n `, restorantData);
+
+let oneStruct = {
+  a: 8,
+  b: [
+    { cc: `sec`, dd: `third` },
+    { xx: `rof`, zz: `oze` },
+  ]
+};
+
+const cpy = deepClone(oneStruct);
+// cpy.c = 999;
+cpy.b = [{ cc: `puuk`, dd: `22` }];
+console.log(oneStruct);
+console.log(cpy);
