@@ -286,7 +286,7 @@ function sum(a) {
 }
 
 let sumRes = sum();
-console.log(sum(5)(6));
+// console.log(sum(5)(6));
 
 function inBetween(a, b) {
   return function (x) {
@@ -295,7 +295,7 @@ function inBetween(a, b) {
 }
 
 let arrr0 = [1, 2, 3, 4, 5, 6, 7];
-console.log(arrr0.filter(inBetween(3, 6))); // 3,4,5,6
+// console.log(arrr0.filter(inBetween(3, 6))); // 3,4,5,6
 
 function inArray(arr) {
   return function (x) {
@@ -304,28 +304,126 @@ function inArray(arr) {
 }
 
 
-let arr01 = [1, 2, 3, 4, 5, 6, 7];
-console.log(arr01.filter(inArray([3, 4, 5, 11]))); // 3,4,5,6
-{
-  let users = [
-    { name: "John", age: 20, surname: "Johnson" },
-    { name: "Pete", age: 18, surname: "Peterson" },
-    { name: "Ann", age: 19, surname: "Hathaway" }
-  ];
+// let arr01 = [1, 2, 3, 4, 5, 6, 7];
+// console.log(arr01.filter(inArray([3, 4, 5, 11]))); // 3,4,5,6
+// {
+//   let users = [
+//     { name: "John", age: 20, surname: "Johnson" },
+//     { name: "Pete", age: 18, surname: "Peterson" },
+//     { name: "Ann", age: 19, surname: "Hathaway" }
+//   ];
 
-  function byField(field) {
-    return (a, b) =>
-      a[field] > b[field] ? 1 : -1; debugger
-  }
+//   function byField(field) {
+//     return (a, b) =>
+//       a[field] > b[field] ? 1 : -1; debugger
+//   }
 
-  users.sort(byField('name')); debugger
-  users.forEach(user => console.log(user.name)); debugger // Ann, John, Pete debugger
+//   users.sort(byField('name')); debugger
+//   users.forEach(user => console.log(user.name)); debugger // Ann, John, Pete debugger
 
-  users.sort(byField('age')); debugger
-  users.forEach(user => console.log(user.name)); debugger // Pete, Ann, Johndebugger
-}
+//   users.sort(byField('age')); debugger
+//   users.forEach(user => console.log(user.name)); debugger // Pete, Ann, Johndebugger
+// }
 
 // Section 2-41
-console.log( typeof([] + false - null + true));
-console.log([] + 1 + 2);
-console.log("1"[0]);
+// console.log(typeof ([] + false - null + true));
+// console.log([] + 1 + 2);
+// console.log("1"[0]);
+
+// function pow1(x, n) {
+//   if (n < 0) { return `error`; }
+//   if (n === 1) { return x; }
+//   else { return x *= pow1(x, n - 1); }
+// }
+
+// let x = 5;
+// let n = 3;
+// console.log(`->`, x, `^`, x, ` = `, pow1(x, n));
+
+let students = {
+  js: [{
+    name: `jonh`,
+    progress: 100,
+  }, {
+    name: `Ivan`,
+    progress: 60,
+  }],
+  html: {
+    basic: [{
+      name: `Peter`,
+      progress: 20,
+    }, {
+      name: `Ann`,
+      progress: 18,
+    }],
+    pro: [{
+      name: `Sam`,
+      progress: 10,
+    }],
+    semi: {
+      students: [{
+        name: test,
+        progress: 100,
+      }]
+
+    }
+  }
+};
+
+console.log(getTotalProgressByItaration(students));
+
+function getTotalProgressByItaration(data) {
+  let total = 0;
+  let students = 0;
+  console.log(Object.values(data));
+
+  for (let course of Object.values(data)) {
+    if (Array.isArray(course)) {
+      students += course.length;
+      for (let i = 0; i < course.length; ++i) {
+        total += course[i].progress;
+      }
+    } else {
+      for (let subCourse of Object.values(course)) {
+        students += subCourse.length;
+        for (let i = 0; i < subCourse.length; ++i) {
+          total += subCourse[i].progress;
+        }
+      }
+    }
+  }
+  return total / students;
+}
+
+
+
+
+const res = getTotalProgressByRecursion(students);
+console.log(res[0] / res[1]);
+
+function getTotalProgressByRecursion(data) {
+  if (Array.isArray(data)) {
+    let total = 0;
+    for (let i = 0; i < data.length; ++i) {
+      total += data[i].progress;
+    }
+    return [total, data.length];
+  } else {
+    let totalArr = [0, 0];
+    for (let subData of Object.values(data)) {
+      const subDataArr = getTotalProgressByRecursion(subData);
+      totalArr[0] += subDataArr[0];
+      totalArr[1] += subDataArr[1];
+    }
+    return totalArr;
+  }
+}
+
+function factorial(n) {
+  if (typeof(n) !== 'number' || !Number.isInteger(n)) {return `Error`;}
+  if (n > 1) { 
+    return n * factorial(n - 1); 
+  }
+  return 1;
+}
+console.log(factorial(5.5));

@@ -127,7 +127,7 @@ const deleteElement = (e) => {
 butn.forEach(btn => {
   btn.addEventListener(`click`, deleteElement, {once: true});
 });
-// console.log(butn);
+console.log(butn);
 // butn.onclick = function () { alert(`44444444`); };
 
 // butn.addEventListener(`click`, ()=>{
@@ -150,3 +150,5 @@ link.addEventListener(`click`, function (event) {
   event.preventDefault();
   console.log(event.target);
 });
+
+console.log(`------------------\n`);

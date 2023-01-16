@@ -6,7 +6,7 @@
   "configurations": [
     {
       "name": "Launch Program",
-      "program": "${workspaceFolder}/js/script.js",
+      "program": "${workspaceFolder}/js/tests.js",
       "request": "launch",
       "skipFiles": [
         "<node_internals>/**"
