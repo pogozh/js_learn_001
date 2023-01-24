@@ -18,49 +18,61 @@ P.S. Здесь есть несколько вариантов решения з
 // Возьмите свой код из предыдущей практики
 
 'use strict';
+document.addEventListener(`DOMContentLoaded`, () => {
 
-const movieDB = {
-    movies: [
-        "Логан",
-        "Лига справедливости",
-        "Ла-ла лэнд",
-        "Одержимость",
-        "Скотт Пилигрим против..."
-    ]
-};
+    const movieDB = {
+        movies: [
+            "Логан",
+            "Лига справедливости",
+            "Ла-ла лэнд",
+            "Одержимость",
+            "Скотт Пилигрим против..."
+        ]
+    };
 
-const adv = document.querySelectorAll(`.promo__adv`);
-const poster = document.querySelector(`.promo__bg`);
-const genr = poster.getElementsByClassName(`promo__genre`);
-const genre = poster.querySelector(`.promo__genre`);
-const mars = document.getElementsByClassName(`promo__bg`);
-const movieList = document.querySelector(`.promo__interactive-list`);
-const add = document.querySelector(`.add`);
-const addButton = add.querySelector(`button`);
-const input = document.querySelector(`.adding__input`);
+    const adv = document.querySelectorAll(`.promo__adv`),
+        promo = document.querySelector(`.promo`),
+        genre = promo.querySelector(`.promo__genre`),
+        addForm = promo.querySelector(`.add`),
+        addButton = addForm.querySelector(`button`),
+        addInput = addForm.querySelector(`.adding__input`),
+        movieList = promo.querySelector(`.promo__interactive-list`),
+        promoBG = promo.querySelector(`.promo__bg`),
+        checkbox = promo.querySelector(`[type="checkbox"]`);
 
-movieList.innerHTML = '';
+    addForm.addEventListener(`submit`, (event) => {
+        event.preventDefault();
 
-addButton.addEventListener(`click`, function() {
-    // console.log(input.value);
-    movieDB.movies.push(input.value);
+        movieList.innerHTML = '';
+        movieDB.movies.sort();
+        movieDB.movies.forEach((film, i) => {
+            movieList.innerHTML +=
+                `<li class="promo__interactive-item">${i + 1} ${film} 
+                <div class="delete"></div>
+                </li>`;
+        });
+        console.log(`==>`, genre, `\nof promo = `, promo, `\nDB: `, movieDB.movies);
+    });
+
+    adv.forEach(item => {
+        item.remove();
+    });
+
+    genre.textContent = `DRAMA`;
+
+    addButton.addEventListener(`click`, () => {
+        movieDB.movies.push(addInput.value);
+        if (checkbox.checked == true) {
+            console.log(`"Добавляем любимый фильм "`, addInput.value);
+        }
+        checkbox.checked = false;
+        addInput.value = ``;
+    });
+
+
+
+    let url = "img/bg.jpg";
+    promoBG.style.backgroundImage = `url(${url})`;
+
 });
 
-
-
-movieDB.movies.sort();
-movieDB.movies.forEach((movie, i) => {
-    movieList.innerHTML +=
-    `<li class="promo__interactive-item">${i+1} ${movie}
-    <div class="delete"></div>
-    </li>`;
-});
-
-genr[0].textContent = 'ДРАМА';
-// genre.textContent = '222222';
-
-adv.forEach(item => {
-    item.remove();
-});
-let url = "img/bg.jpg";
-mars[0].style.backgroundImage = `url(${url})`;

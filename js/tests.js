@@ -420,10 +420,21 @@ function getTotalProgressByRecursion(data) {
 }
 
 function factorial(n) {
-  if (typeof(n) !== 'number' || !Number.isInteger(n)) {return `Error`;}
-  if (n > 1) { 
-    return n * factorial(n - 1); 
+  if (typeof (n) !== 'number' || !Number.isInteger(n)) { return `Error`; }
+  if (n > 1) {
+    return n * factorial(n - 1);
   }
   return 1;
 }
 console.log(factorial(5.5));
+
+// 0+1-2+3-4-5 6 7 8 9
+// 0 +1 + 9 - 2 - 8 + (3 + 7 -5 -4 +6) 
+
+let sum1 = 0 - 1 - 2 - 3 - 4 - 5 + 6 - 7 + 8 + 9;
+let sum2 = 0 + 1 + 2 + 3 + 4 + 5 + 6;
+let a = 0;
+
+console.log(`Сумма = `, sum2, sum1);
+
+// let b = 12 - 3 = 15 -3 -3;
