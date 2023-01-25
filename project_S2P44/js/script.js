@@ -40,19 +40,7 @@ document.addEventListener(`DOMContentLoaded`, () => {
         promoBG = promo.querySelector(`.promo__bg`),
         checkbox = promo.querySelector(`[type="checkbox"]`);
 
-    addForm.addEventListener(`submit`, (event) => {
-        event.preventDefault();
 
-        movieList.innerHTML = '';
-        movieDB.movies.sort();
-        movieDB.movies.forEach((film, i) => {
-            movieList.innerHTML +=
-                `<li class="promo__interactive-item">${i + 1} ${film} 
-                <div class="delete"></div>
-                </li>`;
-        });
-        console.log(`==>`, genre, `\nof promo = `, promo, `\nDB: `, movieDB.movies);
-    });
 
     adv.forEach(item => {
         item.remove();
@@ -60,15 +48,47 @@ document.addEventListener(`DOMContentLoaded`, () => {
 
     genre.textContent = `DRAMA`;
 
-    addButton.addEventListener(`click`, () => {
-        movieDB.movies.push(addInput.value);
-        if (checkbox.checked == true) {
-            console.log(`"Добавляем любимый фильм "`, addInput.value);
+    addButton.addEventListener(`click`, (event) => {
+        //no reload on click
+        event.preventDefault();
+        
+        //add film to DB
+        if (addInput.value.trim() !== ``) {
+            movieDB.movies.push(addInput.value);
+
+            if (checkbox.checked == true) {
+                console.log(`"Добавляем любимый фильм "`, addInput.value);
+            }
         }
         checkbox.checked = false;
         addInput.value = ``;
-    });
 
+        movieList.innerHTML = '';
+        movieDB.movies.sort();
+
+        movieDB.movies.forEach((film, i) => {
+            movieList.innerHTML +=
+                `<li class="promo__interactive-item">${i + 1} ${film} 
+                <div class="delete"></div>
+                </li>`;
+        });
+        console.log(`==>`, genre, `\nof promo = `, promo, `\nDB: `, movieDB.movies);
+
+    });
+    //VARIANT 2    
+    // addForm.addEventListener(`submit`, (event) => {
+    //     event.preventDefault();
+
+    //     movieList.innerHTML = '';
+    //     movieDB.movies.sort();
+    //     movieDB.movies.forEach((film, i) => {
+    //         movieList.innerHTML +=
+    //             `<li class="promo__interactive-item">${i + 1} ${film} 
+    //             <div class="delete"></div>
+    //             </li>`;
+    //     });
+    //     console.log(`==>`, genre, `\nof promo = `, promo, `\nDB: `, movieDB.movies);
+    // });
 
 
     let url = "img/bg.jpg";
