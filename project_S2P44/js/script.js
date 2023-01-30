@@ -18,6 +18,7 @@ P.S. Здесь есть несколько вариантов решения з
 // Возьмите свой код из предыдущей практики
 
 'use strict';
+
 document.addEventListener(`DOMContentLoaded`, () => {
 
     const movieDB = {
@@ -41,58 +42,69 @@ document.addEventListener(`DOMContentLoaded`, () => {
         checkbox = promo.querySelector(`[type="checkbox"]`);
 
 
+    const deleteAdv = (arr) => {
+        arr.forEach(item => {
+            item.remove();
+        });
+    };
 
-    adv.forEach(item => {
-        item.remove();
-    });
+    const makeChanges = () => {
+        genre.textContent = `DRAMA`;
+        let url = "img/bg.jpg";
+        promoBG.style.backgroundImage = `url(${url})`;
+    };
 
-    genre.textContent = `DRAMA`;
+    const sortArr = (arr) => {
+        arr.sort();
+    };
 
-    addButton.addEventListener(`click`, (event) => {
+    function createMovieList(films, parent) {
+        parent.innerHTML = '';
+        sortArr(films);
+        films.forEach((film, i) => {
+            parent.innerHTML +=
+                `<li class="promo__interactive-item">${i + 1} ${film} 
+            <div class="delete"></div>
+            </li>`;
+        });
+
+        document.querySelectorAll(`.delete`).forEach((item, i) => {
+            item.addEventListener(`click`, () => {
+                item.parentElement.remove();
+                movieDB.movies.splice(i, 1);
+                createMovieList(films, parent);
+            });
+        });
+        console.log(`==>`, genre, `\nof promo = `, promo, `\nDB: `, movieDB.movies);
+    }
+
+    // VARIANT 2    
+    addForm.addEventListener(`submit`, (event) => {
         //no reload on click
         event.preventDefault();
-        
+
         //add film to DB
-        if (addInput.value.trim() !== ``) {
+        addInput.value = addInput.value.trim();
+
+        if (addInput.value) {
+
+            if (addInput.value.length > 21) {
+                addInput.value = `${addInput.value.substring(0, 22)}...`;
+            }
             movieDB.movies.push(addInput.value);
+            sortArr(movieDB.movies);
 
             if (checkbox.checked == true) {
                 console.log(`"Добавляем любимый фильм "`, addInput.value);
             }
         }
-        checkbox.checked = false;
-        addInput.value = ``;
-
-        movieList.innerHTML = '';
-        movieDB.movies.sort();
-
-        movieDB.movies.forEach((film, i) => {
-            movieList.innerHTML +=
-                `<li class="promo__interactive-item">${i + 1} ${film} 
-                <div class="delete"></div>
-                </li>`;
-        });
-        console.log(`==>`, genre, `\nof promo = `, promo, `\nDB: `, movieDB.movies);
-
+        createMovieList(movieDB.movies, movieList);
+        // checkbox.checked = false;
+        // addInput.value = ``;
+        event.target.reset();
     });
-    //VARIANT 2    
-    // addForm.addEventListener(`submit`, (event) => {
-    //     event.preventDefault();
-
-    //     movieList.innerHTML = '';
-    //     movieDB.movies.sort();
-    //     movieDB.movies.forEach((film, i) => {
-    //         movieList.innerHTML +=
-    //             `<li class="promo__interactive-item">${i + 1} ${film} 
-    //             <div class="delete"></div>
-    //             </li>`;
-    //     });
-    //     console.log(`==>`, genre, `\nof promo = `, promo, `\nDB: `, movieDB.movies);
-    // });
-
-
-    let url = "img/bg.jpg";
-    promoBG.style.backgroundImage = `url(${url})`;
-
+    createMovieList(movieDB.movies, movieList);
+    deleteAdv(adv);
+    makeChanges();
 });
 
