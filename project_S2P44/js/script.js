@@ -63,13 +63,14 @@ document.addEventListener(`DOMContentLoaded`, () => {
         sortArr(films);
         films.forEach((film, i) => {
             parent.innerHTML +=
-                `<li class="promo__interactive-item">${i + 1} ${film} 
-            <div class="delete"></div>
-            </li>`;
+                `<li 
+                class="promo__interactive-item">${i + 1} ${film} <div class="delete"></div>
+                </li>`;
         });
 
         document.querySelectorAll(`.delete`).forEach((item, i) => {
             item.addEventListener(`click`, () => {
+                console.log(`item:\n`, item);
                 item.parentElement.remove();
                 movieDB.movies.splice(i, 1);
                 createMovieList(films, parent);
