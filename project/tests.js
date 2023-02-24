@@ -438,3 +438,20 @@ let a = 0;
 console.log(`Сумма = `, sum2, sum1);
 
 // let b = 12 - 3 = 15 -3 -3;
+
+
+console / log(`--Rome--`);
+const map = { I: 1, V: 5, X: 10 };
+
+function convertRom(str) {
+  let sum = 0,
+    prevNum = 0;
+  for (let pos in str) {
+    let curNum = map[`${str.at(pos)}`];
+    if (prevNum >= curNum) { sum += curNum; }
+    else { sum += curNum - (prevNum * 2) }
+    prevNum = curNum;
+  }
+  return sum;
+}
+console.log(convertRom(`VIIIX`));
