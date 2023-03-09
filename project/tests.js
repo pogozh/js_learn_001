@@ -455,3 +455,22 @@ function convertRom(str) {
   return sum;
 }
 console.log(convertRom(`VIIIX`));
+
+let name1 = null;
+let name2 = `Sasha`;
+
+console.log(name1 ?? name2 ?? `Petr`);
+
+function narcissistic(value) {
+  // Code me to return true or false
+  let array = [...value.toString()].map(Number);
+  let result = 0;
+  for (let i = 0; i < array.length; ++i) {
+    result += Math.pow(array[i], array.length);
+  }
+  return result == value;
+}
+// console.log(result);
+// console.log(value);
+
+console.log(narcissistic(153));
