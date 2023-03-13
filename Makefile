@@ -13,6 +13,7 @@ push:
 	git push origin develop
 
 test:
-	git commit -m "test $(dt)"
+	git commit -m "test $(date "+%D %T")"
+
 # cd .. &&
 # git add .
