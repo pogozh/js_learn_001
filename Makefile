@@ -3,7 +3,7 @@ target default = one
 one: 
 	git status
 
-dt = $(date "+%D %T")
+dt = $(shell $(date "+%D %T"))
 
 push:
 	git add .
