@@ -20,7 +20,8 @@
       "skipFiles": [
         "<node_internals>/**"
       ],
-      "type": "node"
+      "type": "node",
+      "eslint.lintTask.enable": "true"
     },
     // {
     //   "type": "node",
