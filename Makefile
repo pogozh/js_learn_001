@@ -3,7 +3,7 @@ target default = one
 one: 
 	git status
 
-dt = $(shell $(date "+%D %T"))
+dt = $(date "+%D %T")
 
 push:
 	git add .
@@ -12,5 +12,7 @@ push:
 	git merge
 	git push origin develop
 
+test:
+	git commit -m "test $(dt)"
 # cd .. &&
 # git add .
