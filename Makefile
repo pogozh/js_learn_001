@@ -2,17 +2,17 @@ target default: one
 one: 
 	git status
 
-dt=$(shell $(date "+%D %T"))
-current="`date +'%Y-%m-%d %H:%M:%S'`"
-msg="Updated: $(current)"
+# dt=$(shell $(date "+%D %T"))
+# current=$(shell $(date))
+# msg="Updated: `$(current)`"
 
 push:
 	git add .
-	git commit -m "$(msg)"
+	git commit -m "updated: `date`"
 	git fetch
 	git merge
 	git push origin develop	
 test:
-	git commit -m "$(msg)"
+	git commit -m "`date`"
 # cd .. &&
 # git add .
