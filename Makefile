@@ -8,7 +8,7 @@ one:
 
 push:
 	git add .
-	git commit -m "updated: `date`"
+	git commit -m "updated: $(date)"
 	git fetch
 	git merge
 	git push origin develop	
