@@ -1,4 +1,4 @@
-# target default=one
+target default: one
 one: 
 	git status
 dt=$(shell $(date "+%D %T"))
