@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 {
   // Используйте IntelliSense, чтобы узнать о возможных атрибутах.
   // Наведите указатель мыши, чтобы просмотреть описания существующих атрибутов.
@@ -33,4 +34,41 @@
     //   "program": "${workspaceFolder}/js/tests.js ",
     // }
   ]
+=======
+{
+  // Используйте IntelliSense, чтобы узнать о возможных атрибутах.
+  // Наведите указатель мыши, чтобы просмотреть описания существующих атрибутов.
+  // Для получения дополнительной информации посетите: https://go.microsoft.com/fwlink/?linkid=830387
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Launch Program",
+      "program": "${workspaceFolder}/project/tests.js",
+      "request": "launch",
+      "skipFiles": [
+        "<node_internals>/**"
+      ],
+      "type": "node"
+    },
+    {
+      "name": "Attach",
+      "port": 9229,
+      "request": "attach",
+      "skipFiles": [
+        "<node_internals>/**"
+      ],
+      "type": "node",
+      "eslint.lintTask.enable": "true"
+    },
+    // {
+    //   "type": "node",
+    //   "request": "launch",
+    //   "name": "Launch Program",
+    //   "skipFiles": [
+    //     "<node_internals>/**"
+    //   ],
+    //   "program": "${workspaceFolder}/js/tests.js ",
+    // }
+  ]
+>>>>>>> 7a1e7e6d216f7d1b42bcd336babb2f15c5c8b3ed
 }

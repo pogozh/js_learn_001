@@ -14,7 +14,9 @@
 
 for (let  node of document.body.childNodes ) {
     if (node.nodeName == `#text`) {
-        continue;
+        // continue;
     }
-    console.log(node);
+
+    console.log(`name\n`,node.nodeName);
+    console.log(`->`, node);
 }

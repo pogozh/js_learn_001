@@ -121,22 +121,22 @@ const options = {
   },
 };
 
-console.log(options);
-// delete (options.colors.bg);
-console.log('\n');
+// console.log(options);
+// // delete (options.colors.bg);
+// console.log('\n');
 
-function optionsWithoutRecursion() {
-  for (let key in options) {
-    if (typeof (options[key]) === 'object') {
-      console.log(`subobject ${key} has:`);
-      for (let key1 in options[key]) {
-        console.log(`..property ${key1} have value ${options[key][key1]}`);
-      }
-    } else {
-      console.log(`property ${key} have value ${options[key]}`);
-    }
-  }
-}
+// function optionsWithoutRecursion() {
+//   for (let key in options) {
+//     if (typeof (options[key]) === 'object') {
+//       console.log(`subobject ${key} has:`);
+//       for (let key1 in options[key]) {
+//         console.log(`..property ${key1} have value ${options[key][key1]}`);
+//       }
+//     } else {
+//       console.log(`property ${key} have value ${options[key]}`);
+//     }
+//   }
+// }
 
 function optionsRecursion(options, shift = '', counter = 0) {
   for (let key in options) {
@@ -438,3 +438,85 @@ let a = 0;
 console.log(`Сумма = `, sum2, sum1);
 
 // let b = 12 - 3 = 15 -3 -3;
+
+
+console / log(`--Rome--`);
+const map = { I: 1, V: 5, X: 10 };
+
+function convertRom(str) {
+  let sum = 0,
+    prevNum = 0;
+  for (let pos in str) {
+    let curNum = map[`${str.at(pos)}`];
+    if (prevNum >= curNum) { sum += curNum; }
+    else { sum += curNum - (prevNum * 2) }
+    prevNum = curNum;
+  }
+  return sum;
+}
+console.log(convertRom(`VIIIX`));
+
+let name1 = null;
+let name2 = `Sasha`;
+
+console.log(name1 ?? name2 ?? `Petr`);
+
+function narcissistic(value) {
+  // Code me to return true or false
+  let array = [...value.toString()].map(Number);
+  let result = 0;
+  for (let i = 0; i < array.length; ++i) {
+    result += Math.pow(array[i], array.length);
+  }
+  return result == value;
+}
+// console.log(result);
+// console.log(value);
+
+console.log(narcissistic(153));
+
+// Setup
+const contacts = [
+  {
+    firstName: "Akira",
+    lastName: "Laine",
+    number: "0543236543",
+    likes: ["Pizza", "Coding", "Brownie Points"],
+  },
+  {
+    firstName: "Harry",
+    lastName: "Potter",
+    number: "0994372684",
+    likes: ["Hogwarts", "Magic", "Hagrid"],
+  },
+  {
+    firstName: "Sherlock",
+    lastName: "Holmes",
+    number: "0487345643",
+    likes: ["Intriguing Cases", "Violin"],
+  },
+  {
+    firstName: "Kristian",
+    lastName: "Vos",
+    number: "unknown",
+    likes: ["JavaScript", "Gaming", "Foxes"],
+  },
+];
+
+function lookUpProfile(name, prop) {
+  // Only change code below this line
+  for (let key of contacts) {
+    if (key.firstName == name) {
+      if (key[prop]) {
+        return key[prop];
+      } else {
+        return `No such property`;
+      }
+    }
+  }
+  return `No such contact`
+  // Only change code above this line
+}
+
+console.log(lookUpProfile("Akira", "likes"));
+console.log(lookUpProfile("Kristian", "lastName"));
