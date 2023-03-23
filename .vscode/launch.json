@@ -6,7 +6,7 @@
   "configurations": [
     {
       "name": "Launch Program",
-      "program": "${workspaceFolder}/project/tests.js",
+      "program": "${workspaceFolder}/project_S3P56-57aSymbol-Discript/script.js",
       "request": "launch",
       "skipFiles": [
         "<node_internals>/**"
