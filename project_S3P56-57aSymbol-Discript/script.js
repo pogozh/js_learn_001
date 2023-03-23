@@ -31,7 +31,7 @@ if (0) {
 
 }
 
-if (1) {
+if (0) {
     const myAwesomeDB = {
         movies: [],
         actors: [],
@@ -54,5 +54,26 @@ if (1) {
     const globalSym = Symbol.for('foo'); // Global symbol
     console.log(Symbol.keyFor(globalSym));
     // Expected output: "foo"
+
+}
+
+if (1) {
+    const database = {
+        name: 'Stan',
+        secondName: 'Wolter',
+        age: 36,
+        profession: `coocker`
+    }
+
+    const pinfo = Object.getOwnPropertyDescriptors(database);
+    console.log(pinfo);
+    console.log(Object.getOwnPropertyDescriptor(database, 'name'));
+    Object.defineProperty(database, 'name', { writable: false });
+    // database.name = 'Stan1';
+    Object.defineProperty(database, `weight`, { writable: true, value: 77 });
+    console.log(database.weight);
+    console.log(database);
+    console.log(Object.getOwnPropertyDescriptor(database, 'weight'));
+
 
 }
