@@ -78,7 +78,7 @@ if (0) {
     Object.defineProperty(database, `weight`, { writable: true, value: 77 });
     console.log(database);
     console.log(Object.getOwnPropertyDescriptor(database, 'weight'));
-    console.log(database.getInfo());
+    console.log(`getInfo`, database.getInfo());
 
     //--
     Object.defineProperty(database, `birthday`, { value: `16.12.1984`, enumerable: true, configurable: true });
@@ -242,4 +242,47 @@ if (1) {
         // console.log(map);
     })
 
+}
+
+if (0) {
+    const bigint = 1234567890123456789012345678901234567890n;
+    const sameBigint = BigInt(123456789012345678901234567890);
+    console.log(typeof bigint);
+    console.log(typeof sameBigint);
+    console.log(`bigInt compression`, bigint > sameBigint);
+
+    const bigint1 = 2n;
+    const num = 3;
+    console.log(Number(bigint1) + num);
+    console.log(bigint1 + BigInt(num));
+    console.log(bigint, `\n`, sameBigint);
+
+}
+
+if (0) {
+    function amountOfPages(summary) {
+        let sumP = 0;
+        let pages = 0;
+        for (; pages < summary; ++pages) {
+            if (sumP == summary) return pages;
+            sumP += String(pages + 1).length;
+        }
+        return pages;
+    }
+
+    console.log(amountOfPages(5));
+    console.log(amountOfPages(25));
+    console.log(amountOfPages(1095));
+}
+if (1) {
+    // Вариант, когда строка переводится в нижний регистр до всех операций только 1 раз
+    // Это должно экономить ресурсы компьютера
+    function isPangram(string) {
+        string = string.toLowerCase();
+        return "abcdefghijklmnopqrstuvwxyz".split("").every(function (x) {
+            return string.indexOf(x) !== -1;
+        });
+    }
+    console.log(isPangram(`The quick brown fox jumps over the lazy dog`));
+    console.log(isPangram(`The quick brown fox jumps over the lazy do`));
 }
