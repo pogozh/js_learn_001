@@ -7,7 +7,7 @@ one:
 # msg="Updated: `$(current)`"
 
 push:
-	git add ./
+	git add .
 	git commit -m "updated: $(date)"
 	git fetch
 	git merge
