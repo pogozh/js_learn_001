@@ -277,6 +277,7 @@ if (0) {
 if (1) {
     // Вариант, когда строка переводится в нижний регистр до всех операций только 1 раз
     // Это должно экономить ресурсы компьютера
+    //-
     function isPangram(string) {
         string = string.toLowerCase();
         return "abcdefghijklmnopqrstuvwxyz".split("").every(function (x) {
