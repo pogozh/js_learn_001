@@ -206,7 +206,7 @@ if (0) {
 }
 
 // P59* Map
-if (1) {
+if (0) {
     let map = new Map();
 
     map.set("1", "str1");    // строка в качестве ключа
@@ -274,7 +274,7 @@ if (0) {
     console.log(amountOfPages(25));
     console.log(amountOfPages(1095));
 }
-if (1) {
+if (0) {
     // Вариант, когда строка переводится в нижний регистр до всех операций только 1 раз
     // Это должно экономить ресурсы компьютера
     //
@@ -286,4 +286,48 @@ if (1) {
     }
     console.log(isPangram(`The quick brown fox jumps over the lazy dog`));
     console.log(isPangram(`The quick brown fox jumps over the lazy do`));
+
+    function isPan(str) {
+
+        //--1--
+        // return abc.split(``).every((x) => {
+        //     return str.indexOf(x) !== -1;
+        // });
+        //--2--
+        // let flag = true;
+        // abc.split(``).forEach(function (x) {
+        //     if (str.indexOf(x) == -1) {
+        //         flag = false;
+        //     }
+        // });
+        // return flag;
+        //--3--
+        str = str.toLowerCase();
+        const abc = `abcdefghijklmnopqrstuvwxyz`;
+
+        return !abc.split(``).some((x) => {
+            return str.indexOf(x) == -1;
+        });
+    }
+
+    const abc = `abcdefghijklmnopqrstuvwxyz`;
+    console.log(`2:`, isPan(`The quick brown fox jumps over the lazy dog`));
+    console.log(`2:`, isPan(`The quick brown fox jumps over the lazy do`));
+    console.log(`test:`, `qwerty`.split('').some((x) => { return x == `y`; }));
+
+}
+
+if (1) {
+    function deepCount(a) {
+        let count = a.length;
+        for (let i = 0; i < a.length; i++) {
+            if (Array.isArray(a[i]) === true) {
+                count += deepCount(a[i]);
+            }
+        }
+        return count;
+    }
+
+    console.log(`"1", 5, "3", ["10, 11, "12"]: `, deepCount(["1", "5", "3", ["10", "11", 1, [`aa`]]]));
+
 }
