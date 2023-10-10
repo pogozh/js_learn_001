@@ -5,15 +5,18 @@ window.addEventListener('DOMContentLoaded', () => {
   const tabsParent = document.querySelector('.tabheader__items');
 
   let i = 0;
-  tabs.forEach(tab => {
-    console.log('tabsContent', i, tabsContent[i]);
-    console.log('Tabs[', i, ']', tabs[i]);
-    ++i;
-  });
+  // tabs.forEach(tab => {
+  //   console.log('tabsContent', i, tabsContent[i]);
+  //   console.log('Tabs[', i, ']', tabs[i]);
+  //   ++i;
+  // });
 
   function hideTabContent() {
     tabsContent.forEach(item => {
-      item.style.display = 'none';
+      // item.style.display = 'none'; //v1.0
+      item.classList.add('hide');
+      item.classList.remove('show', `fade`);
+
     });
     tabs.forEach(item => {
       item.classList.remove('tabheader__item_active');
@@ -21,8 +24,10 @@ window.addEventListener('DOMContentLoaded', () => {
   }
 
   function showTabContent(i = 0) {
-    tabsContent[i].style.display = 'block';
+    // tabsContent[i].style.display = 'block'; //v1.0
     tabs[i].classList.add('tabheader__item_active');
+    tabsContent[i].classList.remove('hide');
+    tabsContent[i].classList.add('show', 'fade');
   }
 
   hideTabContent();
